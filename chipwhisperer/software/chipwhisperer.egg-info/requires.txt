@@ -1,0 +1,12 @@
+configobj
+pyserial
+numpy<=1.26.4
+libusb1
+ECpy
+fastdtw
+Cython
+tqdm
+libusb1
+
+[trace]
+software
