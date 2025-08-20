@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data_Generation_Pipeline &mdash; riscv-power-tools v0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=fa47ad08"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="riscv32_isg module" href="riscv32_isg.html" />
+    <link rel="prev" title="riscv-power-tools documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            riscv-power-tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data_Generation_Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html">riscv32_isg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">riscv-power-tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data_Generation_Pipeline</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-generation-pipeline">
+<h1>Data_Generation_Pipeline<a class="headerlink" href="#data-generation-pipeline" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="riscv32_isg.html">riscv32_isg module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.Extension"><code class="docutils literal notranslate"><span class="pre">Extension</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.Extension.RV32A"><code class="docutils literal notranslate"><span class="pre">Extension.RV32A</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.Extension.RV32C"><code class="docutils literal notranslate"><span class="pre">Extension.RV32C</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.Extension.RV32D"><code class="docutils literal notranslate"><span class="pre">Extension.RV32D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.Extension.RV32F"><code class="docutils literal notranslate"><span class="pre">Extension.RV32F</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.Extension.RV32I"><code class="docutils literal notranslate"><span class="pre">Extension.RV32I</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.Extension.RV32M"><code class="docutils literal notranslate"><span class="pre">Extension.RV32M</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionClass"><code class="docutils literal notranslate"><span class="pre">InstructionClass</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionClass.ALU"><code class="docutils literal notranslate"><span class="pre">InstructionClass.ALU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionClass.ATOMIC"><code class="docutils literal notranslate"><span class="pre">InstructionClass.ATOMIC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionClass.BRANCH"><code class="docutils literal notranslate"><span class="pre">InstructionClass.BRANCH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionClass.JUMP"><code class="docutils literal notranslate"><span class="pre">InstructionClass.JUMP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionClass.LOAD"><code class="docutils literal notranslate"><span class="pre">InstructionClass.LOAD</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionClass.MULTIPLY"><code class="docutils literal notranslate"><span class="pre">InstructionClass.MULTIPLY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionClass.STORE"><code class="docutils literal notranslate"><span class="pre">InstructionClass.STORE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionClass.SYSTEM"><code class="docutils literal notranslate"><span class="pre">InstructionClass.SYSTEM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionComplexity"><code class="docutils literal notranslate"><span class="pre">InstructionComplexity</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionComplexity.COMPLEX"><code class="docutils literal notranslate"><span class="pre">InstructionComplexity.COMPLEX</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionComplexity.CONTROL"><code class="docutils literal notranslate"><span class="pre">InstructionComplexity.CONTROL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionComplexity.SIMPLE"><code class="docutils literal notranslate"><span class="pre">InstructionComplexity.SIMPLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionSpec"><code class="docutils literal notranslate"><span class="pre">InstructionSpec</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionSpec.complexity"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.complexity</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionSpec.constraints"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.constraints</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionSpec.description"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionSpec.extension"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.extension</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionSpec.inst_class"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.inst_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionSpec.mnemonic"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.mnemonic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.InstructionSpec.syntax_type"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.syntax_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVAssemblyGenerator"><code class="docutils literal notranslate"><span class="pre">RISCVAssemblyGenerator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVAssemblyGenerator.format_for_inline_asm"><code class="docutils literal notranslate"><span class="pre">RISCVAssemblyGenerator.format_for_inline_asm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVAssemblyGenerator.generate_instruction"><code class="docutils literal notranslate"><span class="pre">RISCVAssemblyGenerator.generate_instruction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVAssemblyGenerator.generate_program"><code class="docutils literal notranslate"><span class="pre">RISCVAssemblyGenerator.generate_program()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVInstructionSet"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVInstructionSet._populate_rv32c"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet._populate_rv32c()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVInstructionSet._populate_rv32i"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet._populate_rv32i()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVInstructionSet._populate_rv32m"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet._populate_rv32m()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVInstructionSet.get_instructions_by_class"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet.get_instructions_by_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVInstructionSet.get_instructions_by_extension"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet.get_instructions_by_extension()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RISCVInstructionSet.get_random_instruction"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet.get_random_instruction()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterFile"><code class="docutils literal notranslate"><span class="pre">RegisterFile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterFile.get_compressed_registers"><code class="docutils literal notranslate"><span class="pre">RegisterFile.get_compressed_registers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterFile.get_random_reg"><code class="docutils literal notranslate"><span class="pre">RegisterFile.get_random_reg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterFile.get_registers_by_type"><code class="docutils literal notranslate"><span class="pre">RegisterFile.get_registers_by_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterSpec"><code class="docutils literal notranslate"><span class="pre">RegisterSpec</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterSpec.abi_name"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.abi_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterSpec.description"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterSpec.name"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterSpec.reg_type"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.reg_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterSpec.supports_compressed"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.supports_compressed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterType"><code class="docutils literal notranslate"><span class="pre">RegisterType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterType.ARG"><code class="docutils literal notranslate"><span class="pre">RegisterType.ARG</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterType.GLOBAL_PTR"><code class="docutils literal notranslate"><span class="pre">RegisterType.GLOBAL_PTR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterType.RETURN_ADDR"><code class="docutils literal notranslate"><span class="pre">RegisterType.RETURN_ADDR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterType.SAVED"><code class="docutils literal notranslate"><span class="pre">RegisterType.SAVED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterType.STACK_PTR"><code class="docutils literal notranslate"><span class="pre">RegisterType.STACK_PTR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterType.TEMP"><code class="docutils literal notranslate"><span class="pre">RegisterType.TEMP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterType.THREAD_PTR"><code class="docutils literal notranslate"><span class="pre">RegisterType.THREAD_PTR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.RegisterType.ZERO"><code class="docutils literal notranslate"><span class="pre">RegisterType.ZERO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_b_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_b_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_ca_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_ca_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_cb_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cb_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_ci_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_ci_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_ciw_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_ciw_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_cj_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cj_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_cl_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cl_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_cr_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cr_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_cs_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cs_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_csr_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_csr_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_css_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_css_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_i_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_i_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_j_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_j_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_label"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_label()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_r_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_r_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_s_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_s_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._gen_u_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_u_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._generate_addi16sp_sequence"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._generate_addi16sp_sequence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._generate_compressed_jump_sequence"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._generate_compressed_jump_sequence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._generate_jalr_sequence"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._generate_jalr_sequence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator._generate_stack_pointer_sequence"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._generate_stack_pointer_sequence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxGenerator.generate"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType"><code class="docutils literal notranslate"><span class="pre">SyntaxType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.B_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.B_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CA_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CA_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CB_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CB_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CIW_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CIW_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CI_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CI_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CJ_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CJ_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CL_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CL_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CR_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CR_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CSR_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CSR_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CSS_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CSS_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.CS_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CS_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.I_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.I_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.J_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.J_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.R_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.R_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.S_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.S_TYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv32_isg.html#riscv32_isg.SyntaxType.U_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.U_TYPE</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">utils module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#utils.DataGenerator"><code class="docutils literal notranslate"><span class="pre">DataGenerator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.__init__"><code class="docutils literal notranslate"><span class="pre">DataGenerator.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator._capture_trace"><code class="docutils literal notranslate"><span class="pre">DataGenerator._capture_trace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator._load_state"><code class="docutils literal notranslate"><span class="pre">DataGenerator._load_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator._prime_debugger"><code class="docutils literal notranslate"><span class="pre">DataGenerator._prime_debugger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator._run_gdb_command_efficient"><code class="docutils literal notranslate"><span class="pre">DataGenerator._run_gdb_command_efficient()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator._run_gdb_trace"><code class="docutils literal notranslate"><span class="pre">DataGenerator._run_gdb_trace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator._save_state"><code class="docutils literal notranslate"><span class="pre">DataGenerator._save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator._set_sample_range"><code class="docutils literal notranslate"><span class="pre">DataGenerator._set_sample_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.build_all"><code class="docutils literal notranslate"><span class="pre">DataGenerator.build_all()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.build_software"><code class="docutils literal notranslate"><span class="pre">DataGenerator.build_software()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.debug_all_labels"><code class="docutils literal notranslate"><span class="pre">DataGenerator.debug_all_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.debug_labels"><code class="docutils literal notranslate"><span class="pre">DataGenerator.debug_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.find_source_file"><code class="docutils literal notranslate"><span class="pre">DataGenerator.find_source_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.gen_makefile"><code class="docutils literal notranslate"><span class="pre">DataGenerator.gen_makefile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.generate_all_data"><code class="docutils literal notranslate"><span class="pre">DataGenerator.generate_all_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.generate_all_labels"><code class="docutils literal notranslate"><span class="pre">DataGenerator.generate_all_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.generate_data"><code class="docutils literal notranslate"><span class="pre">DataGenerator.generate_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.generate_labels"><code class="docutils literal notranslate"><span class="pre">DataGenerator.generate_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.get_dir"><code class="docutils literal notranslate"><span class="pre">DataGenerator.get_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.get_ext"><code class="docutils literal notranslate"><span class="pre">DataGenerator.get_ext()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.get_software_status"><code class="docutils literal notranslate"><span class="pre">DataGenerator.get_software_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataGenerator.list_software"><code class="docutils literal notranslate"><span class="pre">DataGenerator.list_software()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#utils.DataSynthesizer"><code class="docutils literal notranslate"><span class="pre">DataSynthesizer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataSynthesizer.__init__"><code class="docutils literal notranslate"><span class="pre">DataSynthesizer.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataSynthesizer.extend_corpus"><code class="docutils literal notranslate"><span class="pre">DataSynthesizer.extend_corpus()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataSynthesizer.gen_c_file"><code class="docutils literal notranslate"><span class="pre">DataSynthesizer.gen_c_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#utils.DataWrangler"><code class="docutils literal notranslate"><span class="pre">DataWrangler</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.__init__"><code class="docutils literal notranslate"><span class="pre">DataWrangler.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler._get_fileformat"><code class="docutils literal notranslate"><span class="pre">DataWrangler._get_fileformat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.aggregate_counts"><code class="docutils literal notranslate"><span class="pre">DataWrangler.aggregate_counts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.calculate_snr"><code class="docutils literal notranslate"><span class="pre">DataWrangler.calculate_snr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.count_instructions"><code class="docutils literal notranslate"><span class="pre">DataWrangler.count_instructions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.extract_instructions"><code class="docutils literal notranslate"><span class="pre">DataWrangler.extract_instructions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.genDatasetFairseq"><code class="docutils literal notranslate"><span class="pre">DataWrangler.genDatasetFairseq()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.gen_labels"><code class="docutils literal notranslate"><span class="pre">DataWrangler.gen_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.generateVocab"><code class="docutils literal notranslate"><span class="pre">DataWrangler.generateVocab()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.get_instruction_distribution"><code class="docutils literal notranslate"><span class="pre">DataWrangler.get_instruction_distribution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.get_raw_labels"><code class="docutils literal notranslate"><span class="pre">DataWrangler.get_raw_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.get_trace_counts"><code class="docutils literal notranslate"><span class="pre">DataWrangler.get_trace_counts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.get_traces"><code class="docutils literal notranslate"><span class="pre">DataWrangler.get_traces()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.parse_labels"><code class="docutils literal notranslate"><span class="pre">DataWrangler.parse_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.parse_raw_data"><code class="docutils literal notranslate"><span class="pre">DataWrangler.parse_raw_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.DataWrangler.wavWrite"><code class="docutils literal notranslate"><span class="pre">DataWrangler.wavWrite()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#utils.IbexChipWhisperer"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.IbexChipWhisperer.__init__"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.IbexChipWhisperer.connect"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.connect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.IbexChipWhisperer.disconnect"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.disconnect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.IbexChipWhisperer.program_fpga"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.program_fpga()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.IbexChipWhisperer.reload"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.reload()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#utils.ProjectBaseClass"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.ProjectBaseClass.__init__"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.ProjectBaseClass.get_dir"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass.get_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.ProjectBaseClass.get_ext"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass.get_ext()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#utils.ProjectBaseClass.get_software_directories"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass.get_software_directories()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="riscv-power-tools documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="riscv32_isg.html" class="btn btn-neutral float-right" title="riscv32_isg module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mathias Duedahl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

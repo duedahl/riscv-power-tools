@@ -1,0 +1,938 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>riscv32_isg module &mdash; riscv-power-tools v0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=fa47ad08"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils module" href="utils.html" />
+    <link rel="prev" title="Data_Generation_Pipeline" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            riscv-power-tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Data_Generation_Pipeline</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">riscv32_isg module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.Extension"><code class="docutils literal notranslate"><span class="pre">Extension</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.Extension.RV32A"><code class="docutils literal notranslate"><span class="pre">Extension.RV32A</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.Extension.RV32C"><code class="docutils literal notranslate"><span class="pre">Extension.RV32C</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.Extension.RV32D"><code class="docutils literal notranslate"><span class="pre">Extension.RV32D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.Extension.RV32F"><code class="docutils literal notranslate"><span class="pre">Extension.RV32F</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.Extension.RV32I"><code class="docutils literal notranslate"><span class="pre">Extension.RV32I</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.Extension.RV32M"><code class="docutils literal notranslate"><span class="pre">Extension.RV32M</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.InstructionClass"><code class="docutils literal notranslate"><span class="pre">InstructionClass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionClass.ALU"><code class="docutils literal notranslate"><span class="pre">InstructionClass.ALU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionClass.ATOMIC"><code class="docutils literal notranslate"><span class="pre">InstructionClass.ATOMIC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionClass.BRANCH"><code class="docutils literal notranslate"><span class="pre">InstructionClass.BRANCH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionClass.JUMP"><code class="docutils literal notranslate"><span class="pre">InstructionClass.JUMP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionClass.LOAD"><code class="docutils literal notranslate"><span class="pre">InstructionClass.LOAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionClass.MULTIPLY"><code class="docutils literal notranslate"><span class="pre">InstructionClass.MULTIPLY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionClass.STORE"><code class="docutils literal notranslate"><span class="pre">InstructionClass.STORE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionClass.SYSTEM"><code class="docutils literal notranslate"><span class="pre">InstructionClass.SYSTEM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.InstructionComplexity"><code class="docutils literal notranslate"><span class="pre">InstructionComplexity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionComplexity.COMPLEX"><code class="docutils literal notranslate"><span class="pre">InstructionComplexity.COMPLEX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionComplexity.CONTROL"><code class="docutils literal notranslate"><span class="pre">InstructionComplexity.CONTROL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionComplexity.SIMPLE"><code class="docutils literal notranslate"><span class="pre">InstructionComplexity.SIMPLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.InstructionSpec"><code class="docutils literal notranslate"><span class="pre">InstructionSpec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionSpec.complexity"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.complexity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionSpec.constraints"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.constraints</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionSpec.description"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionSpec.extension"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.extension</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionSpec.inst_class"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.inst_class</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionSpec.mnemonic"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.mnemonic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.InstructionSpec.syntax_type"><code class="docutils literal notranslate"><span class="pre">InstructionSpec.syntax_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.RISCVAssemblyGenerator"><code class="docutils literal notranslate"><span class="pre">RISCVAssemblyGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RISCVAssemblyGenerator.format_for_inline_asm"><code class="docutils literal notranslate"><span class="pre">RISCVAssemblyGenerator.format_for_inline_asm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RISCVAssemblyGenerator.generate_instruction"><code class="docutils literal notranslate"><span class="pre">RISCVAssemblyGenerator.generate_instruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RISCVAssemblyGenerator.generate_program"><code class="docutils literal notranslate"><span class="pre">RISCVAssemblyGenerator.generate_program()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.RISCVInstructionSet"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RISCVInstructionSet._populate_rv32c"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet._populate_rv32c()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RISCVInstructionSet._populate_rv32i"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet._populate_rv32i()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RISCVInstructionSet._populate_rv32m"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet._populate_rv32m()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RISCVInstructionSet.get_instructions_by_class"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet.get_instructions_by_class()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RISCVInstructionSet.get_instructions_by_extension"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet.get_instructions_by_extension()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RISCVInstructionSet.get_random_instruction"><code class="docutils literal notranslate"><span class="pre">RISCVInstructionSet.get_random_instruction()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.RegisterFile"><code class="docutils literal notranslate"><span class="pre">RegisterFile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterFile.get_compressed_registers"><code class="docutils literal notranslate"><span class="pre">RegisterFile.get_compressed_registers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterFile.get_random_reg"><code class="docutils literal notranslate"><span class="pre">RegisterFile.get_random_reg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterFile.get_registers_by_type"><code class="docutils literal notranslate"><span class="pre">RegisterFile.get_registers_by_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.RegisterSpec"><code class="docutils literal notranslate"><span class="pre">RegisterSpec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterSpec.abi_name"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.abi_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterSpec.description"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterSpec.name"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterSpec.reg_type"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.reg_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterSpec.supports_compressed"><code class="docutils literal notranslate"><span class="pre">RegisterSpec.supports_compressed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.RegisterType"><code class="docutils literal notranslate"><span class="pre">RegisterType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterType.ARG"><code class="docutils literal notranslate"><span class="pre">RegisterType.ARG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterType.GLOBAL_PTR"><code class="docutils literal notranslate"><span class="pre">RegisterType.GLOBAL_PTR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterType.RETURN_ADDR"><code class="docutils literal notranslate"><span class="pre">RegisterType.RETURN_ADDR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterType.SAVED"><code class="docutils literal notranslate"><span class="pre">RegisterType.SAVED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterType.STACK_PTR"><code class="docutils literal notranslate"><span class="pre">RegisterType.STACK_PTR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterType.TEMP"><code class="docutils literal notranslate"><span class="pre">RegisterType.TEMP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterType.THREAD_PTR"><code class="docutils literal notranslate"><span class="pre">RegisterType.THREAD_PTR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.RegisterType.ZERO"><code class="docutils literal notranslate"><span class="pre">RegisterType.ZERO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_b_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_b_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_ca_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_ca_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_cb_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cb_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_ci_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_ci_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_ciw_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_ciw_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_cj_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cj_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_cl_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cl_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_cr_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cr_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_cs_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_cs_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_csr_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_csr_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_css_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_css_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_i_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_i_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_j_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_j_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_label"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_label()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_r_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_r_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_s_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_s_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._gen_u_type"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._gen_u_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._generate_addi16sp_sequence"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._generate_addi16sp_sequence()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._generate_compressed_jump_sequence"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._generate_compressed_jump_sequence()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._generate_jalr_sequence"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._generate_jalr_sequence()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator._generate_stack_pointer_sequence"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator._generate_stack_pointer_sequence()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxGenerator.generate"><code class="docutils literal notranslate"><span class="pre">SyntaxGenerator.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#riscv32_isg.SyntaxType"><code class="docutils literal notranslate"><span class="pre">SyntaxType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.B_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.B_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CA_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CA_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CB_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CB_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CIW_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CIW_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CI_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CI_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CJ_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CJ_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CL_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CL_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CR_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CR_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CSR_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CSR_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CSS_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CSS_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.CS_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.CS_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.I_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.I_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.J_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.J_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.R_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.R_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.S_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.S_TYPE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#riscv32_isg.SyntaxType.U_TYPE"><code class="docutils literal notranslate"><span class="pre">SyntaxType.U_TYPE</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">riscv-power-tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Data_Generation_Pipeline</a></li>
+      <li class="breadcrumb-item active">riscv32_isg module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/riscv32_isg.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-riscv32_isg">
+<span id="riscv32-isg-module"></span><h1>riscv32_isg module<a class="headerlink" href="#module-riscv32_isg" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.Extension">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">Extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.Extension" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>RISC-V extensions</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.Extension.RV32A">
+<span class="sig-name descname"><span class="pre">RV32A</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rv32a'</span></em><a class="headerlink" href="#riscv32_isg.Extension.RV32A" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.Extension.RV32C">
+<span class="sig-name descname"><span class="pre">RV32C</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rv32c'</span></em><a class="headerlink" href="#riscv32_isg.Extension.RV32C" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.Extension.RV32D">
+<span class="sig-name descname"><span class="pre">RV32D</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rv32d'</span></em><a class="headerlink" href="#riscv32_isg.Extension.RV32D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.Extension.RV32F">
+<span class="sig-name descname"><span class="pre">RV32F</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rv32f'</span></em><a class="headerlink" href="#riscv32_isg.Extension.RV32F" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.Extension.RV32I">
+<span class="sig-name descname"><span class="pre">RV32I</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rv32i'</span></em><a class="headerlink" href="#riscv32_isg.Extension.RV32I" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.Extension.RV32M">
+<span class="sig-name descname"><span class="pre">RV32M</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rv32m'</span></em><a class="headerlink" href="#riscv32_isg.Extension.RV32M" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionClass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">InstructionClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.InstructionClass" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Functional classification of instructions</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionClass.ALU">
+<span class="sig-name descname"><span class="pre">ALU</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alu'</span></em><a class="headerlink" href="#riscv32_isg.InstructionClass.ALU" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionClass.ATOMIC">
+<span class="sig-name descname"><span class="pre">ATOMIC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'atomic'</span></em><a class="headerlink" href="#riscv32_isg.InstructionClass.ATOMIC" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionClass.BRANCH">
+<span class="sig-name descname"><span class="pre">BRANCH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'branch'</span></em><a class="headerlink" href="#riscv32_isg.InstructionClass.BRANCH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionClass.JUMP">
+<span class="sig-name descname"><span class="pre">JUMP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'jump'</span></em><a class="headerlink" href="#riscv32_isg.InstructionClass.JUMP" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionClass.LOAD">
+<span class="sig-name descname"><span class="pre">LOAD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'load'</span></em><a class="headerlink" href="#riscv32_isg.InstructionClass.LOAD" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionClass.MULTIPLY">
+<span class="sig-name descname"><span class="pre">MULTIPLY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'multiply'</span></em><a class="headerlink" href="#riscv32_isg.InstructionClass.MULTIPLY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionClass.STORE">
+<span class="sig-name descname"><span class="pre">STORE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'store'</span></em><a class="headerlink" href="#riscv32_isg.InstructionClass.STORE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionClass.SYSTEM">
+<span class="sig-name descname"><span class="pre">SYSTEM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'system'</span></em><a class="headerlink" href="#riscv32_isg.InstructionClass.SYSTEM" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionComplexity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">InstructionComplexity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.InstructionComplexity" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Instruction complexity levels</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionComplexity.COMPLEX">
+<span class="sig-name descname"><span class="pre">COMPLEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'complex'</span></em><a class="headerlink" href="#riscv32_isg.InstructionComplexity.COMPLEX" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionComplexity.CONTROL">
+<span class="sig-name descname"><span class="pre">CONTROL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'control'</span></em><a class="headerlink" href="#riscv32_isg.InstructionComplexity.CONTROL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionComplexity.SIMPLE">
+<span class="sig-name descname"><span class="pre">SIMPLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'simple'</span></em><a class="headerlink" href="#riscv32_isg.InstructionComplexity.SIMPLE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionSpec">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">InstructionSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mnemonic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inst_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complexity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.InstructionSpec" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Specification for a RISC-V instruction</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionSpec.complexity">
+<span class="sig-name descname"><span class="pre">complexity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#riscv32_isg.InstructionComplexity" title="riscv32_isg.InstructionComplexity"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstructionComplexity</span></code></a></em><a class="headerlink" href="#riscv32_isg.InstructionSpec.complexity" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionSpec.constraints">
+<span class="sig-name descname"><span class="pre">constraints</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#riscv32_isg.InstructionSpec.constraints" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionSpec.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#riscv32_isg.InstructionSpec.description" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionSpec.extension">
+<span class="sig-name descname"><span class="pre">extension</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#riscv32_isg.Extension" title="riscv32_isg.Extension"><code class="xref py py-class docutils literal notranslate"><span class="pre">Extension</span></code></a></em><a class="headerlink" href="#riscv32_isg.InstructionSpec.extension" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionSpec.inst_class">
+<span class="sig-name descname"><span class="pre">inst_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#riscv32_isg.InstructionClass" title="riscv32_isg.InstructionClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstructionClass</span></code></a></em><a class="headerlink" href="#riscv32_isg.InstructionSpec.inst_class" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionSpec.mnemonic">
+<span class="sig-name descname"><span class="pre">mnemonic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#riscv32_isg.InstructionSpec.mnemonic" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.InstructionSpec.syntax_type">
+<span class="sig-name descname"><span class="pre">syntax_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#riscv32_isg.SyntaxType" title="riscv32_isg.SyntaxType"><code class="xref py py-class docutils literal notranslate"><span class="pre">SyntaxType</span></code></a></em><a class="headerlink" href="#riscv32_isg.InstructionSpec.syntax_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVAssemblyGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">RISCVAssemblyGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled_extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_instructions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nop_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVAssemblyGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Main assembly generator class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVAssemblyGenerator.format_for_inline_asm">
+<span class="sig-name descname"><span class="pre">format_for_inline_asm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVAssemblyGenerator.format_for_inline_asm" title="Link to this definition"></a></dt>
+<dd><p>Format assembly code for inline assembly compatibility</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVAssemblyGenerator.generate_instruction">
+<span class="sig-name descname"><span class="pre">generate_instruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">complexity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_registers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVAssemblyGenerator.generate_instruction" title="Link to this definition"></a></dt>
+<dd><p>Generate a single random instruction, with label if needed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVAssemblyGenerator.generate_program">
+<span class="sig-name descname"><span class="pre">generate_program</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_instructions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVAssemblyGenerator.generate_program" title="Link to this definition"></a></dt>
+<dd><p>Generate an assembly program snippet for inline use in C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVInstructionSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">RISCVInstructionSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allow_nop_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVInstructionSet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Database of RISC-V instructions</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVInstructionSet._populate_rv32c">
+<span class="sig-name descname"><span class="pre">_populate_rv32c</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVInstructionSet._populate_rv32c" title="Link to this definition"></a></dt>
+<dd><p>Populate RV32C compressed extension (subset)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVInstructionSet._populate_rv32i">
+<span class="sig-name descname"><span class="pre">_populate_rv32i</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVInstructionSet._populate_rv32i" title="Link to this definition"></a></dt>
+<dd><p>Populate RV32I base instruction set</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVInstructionSet._populate_rv32m">
+<span class="sig-name descname"><span class="pre">_populate_rv32m</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVInstructionSet._populate_rv32m" title="Link to this definition"></a></dt>
+<dd><p>Populate RV32M multiplication extension</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVInstructionSet.get_instructions_by_class">
+<span class="sig-name descname"><span class="pre">get_instructions_by_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inst_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVInstructionSet.get_instructions_by_class" title="Link to this definition"></a></dt>
+<dd><p>Get all instructions for a specific class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#riscv32_isg.InstructionSpec" title="riscv32_isg.InstructionSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstructionSpec</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVInstructionSet.get_instructions_by_extension">
+<span class="sig-name descname"><span class="pre">get_instructions_by_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extension</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVInstructionSet.get_instructions_by_extension" title="Link to this definition"></a></dt>
+<dd><p>Get all instructions for a specific extension</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#riscv32_isg.InstructionSpec" title="riscv32_isg.InstructionSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstructionSpec</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RISCVInstructionSet.get_random_instruction">
+<span class="sig-name descname"><span class="pre">get_random_instruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complexity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instruction_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RISCVInstructionSet.get_random_instruction" title="Link to this definition"></a></dt>
+<dd><p>Get a random instruction, optionally filtered by extensions or complexity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#riscv32_isg.InstructionSpec" title="riscv32_isg.InstructionSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstructionSpec</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">RegisterFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">excluded_registers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RegisterFile" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages RISC-V register specifications</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterFile.get_compressed_registers">
+<span class="sig-name descname"><span class="pre">get_compressed_registers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reg_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RegisterFile.get_compressed_registers" title="Link to this definition"></a></dt>
+<dd><p>Get registers that support compressed instructions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#riscv32_isg.RegisterSpec" title="riscv32_isg.RegisterSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegisterSpec</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterFile.get_random_reg">
+<span class="sig-name descname"><span class="pre">get_random_reg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allowed_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclusions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_compressed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RegisterFile.get_random_reg" title="Link to this definition"></a></dt>
+<dd><p>Get a random register name filtered by criteria</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterFile.get_registers_by_type">
+<span class="sig-name descname"><span class="pre">get_registers_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reg_types</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RegisterFile.get_registers_by_type" title="Link to this definition"></a></dt>
+<dd><p>Get all registers matching given types</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#riscv32_isg.RegisterSpec" title="riscv32_isg.RegisterSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegisterSpec</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterSpec">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">RegisterSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abi_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supports_compressed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RegisterSpec" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Specification for a RISC-V register</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterSpec.abi_name">
+<span class="sig-name descname"><span class="pre">abi_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#riscv32_isg.RegisterSpec.abi_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterSpec.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#riscv32_isg.RegisterSpec.description" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterSpec.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#riscv32_isg.RegisterSpec.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterSpec.reg_type">
+<span class="sig-name descname"><span class="pre">reg_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#riscv32_isg.RegisterType" title="riscv32_isg.RegisterType"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegisterType</span></code></a></em><a class="headerlink" href="#riscv32_isg.RegisterSpec.reg_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterSpec.supports_compressed">
+<span class="sig-name descname"><span class="pre">supports_compressed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><a class="headerlink" href="#riscv32_isg.RegisterSpec.supports_compressed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">RegisterType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.RegisterType" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Register type classification</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterType.ARG">
+<span class="sig-name descname"><span class="pre">ARG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'arg'</span></em><a class="headerlink" href="#riscv32_isg.RegisterType.ARG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterType.GLOBAL_PTR">
+<span class="sig-name descname"><span class="pre">GLOBAL_PTR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gp'</span></em><a class="headerlink" href="#riscv32_isg.RegisterType.GLOBAL_PTR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterType.RETURN_ADDR">
+<span class="sig-name descname"><span class="pre">RETURN_ADDR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ra'</span></em><a class="headerlink" href="#riscv32_isg.RegisterType.RETURN_ADDR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterType.SAVED">
+<span class="sig-name descname"><span class="pre">SAVED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'saved'</span></em><a class="headerlink" href="#riscv32_isg.RegisterType.SAVED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterType.STACK_PTR">
+<span class="sig-name descname"><span class="pre">STACK_PTR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sp'</span></em><a class="headerlink" href="#riscv32_isg.RegisterType.STACK_PTR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterType.TEMP">
+<span class="sig-name descname"><span class="pre">TEMP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'temp'</span></em><a class="headerlink" href="#riscv32_isg.RegisterType.TEMP" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterType.THREAD_PTR">
+<span class="sig-name descname"><span class="pre">THREAD_PTR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tp'</span></em><a class="headerlink" href="#riscv32_isg.RegisterType.THREAD_PTR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.RegisterType.ZERO">
+<span class="sig-name descname"><span class="pre">ZERO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'zero'</span></em><a class="headerlink" href="#riscv32_isg.RegisterType.ZERO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">SyntaxGenerator</span></span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generates instruction syntax based on type</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_b_type">
+<span class="sig-name descname"><span class="pre">_gen_b_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_b_type" title="Link to this definition"></a></dt>
+<dd><p>Generate B-type: rs1, rs2, label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_ca_type">
+<span class="sig-name descname"><span class="pre">_gen_ca_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_ca_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CA-type: rd’/rs1’, rs2’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_cb_type">
+<span class="sig-name descname"><span class="pre">_gen_cb_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_cb_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CB-type: rs1’, offset or rs1’, imm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_ci_type">
+<span class="sig-name descname"><span class="pre">_gen_ci_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_ci_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CI-type: rd, imm or special formats</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_ciw_type">
+<span class="sig-name descname"><span class="pre">_gen_ciw_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_ciw_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CIW-type: rd’, uimm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_cj_type">
+<span class="sig-name descname"><span class="pre">_gen_cj_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_cj_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CJ-type: offset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_cl_type">
+<span class="sig-name descname"><span class="pre">_gen_cl_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_cl_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CL-type: rd’, offset(rs1’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_cr_type">
+<span class="sig-name descname"><span class="pre">_gen_cr_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_cr_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CR-type: rd, rs2 or single register</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_cs_type">
+<span class="sig-name descname"><span class="pre">_gen_cs_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_cs_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CS-type: rs2’, offset(rs1’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_csr_type">
+<span class="sig-name descname"><span class="pre">_gen_csr_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_csr_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CSR-type: rd, csr, rs1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_css_type">
+<span class="sig-name descname"><span class="pre">_gen_css_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_css_type" title="Link to this definition"></a></dt>
+<dd><p>Generate CSS-type: rs2, offset(sp)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_i_type">
+<span class="sig-name descname"><span class="pre">_gen_i_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_i_type" title="Link to this definition"></a></dt>
+<dd><p>Generate I-type: rd, rs1, imm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_j_type">
+<span class="sig-name descname"><span class="pre">_gen_j_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_j_type" title="Link to this definition"></a></dt>
+<dd><p>Generate J-type: rd, label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_label">
+<span class="sig-name descname"><span class="pre">_gen_label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_label" title="Link to this definition"></a></dt>
+<dd><p>Generate a unique label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_r_type">
+<span class="sig-name descname"><span class="pre">_gen_r_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_r_type" title="Link to this definition"></a></dt>
+<dd><p>Generate R-type: rd, rs1, rs2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_s_type">
+<span class="sig-name descname"><span class="pre">_gen_s_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_s_type" title="Link to this definition"></a></dt>
+<dd><p>Generate S-type: rs2, offset(rs1) or rd, offset(rs1) for loads</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._gen_u_type">
+<span class="sig-name descname"><span class="pre">_gen_u_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._gen_u_type" title="Link to this definition"></a></dt>
+<dd><p>Generate U-type: rd, imm or rd, label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._generate_addi16sp_sequence">
+<span class="sig-name descname"><span class="pre">_generate_addi16sp_sequence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._generate_addi16sp_sequence" title="Link to this definition"></a></dt>
+<dd><p>Generate ADDI16SP + filler + ADDI16SP sequence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._generate_compressed_jump_sequence">
+<span class="sig-name descname"><span class="pre">_generate_compressed_jump_sequence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._generate_compressed_jump_sequence" title="Link to this definition"></a></dt>
+<dd><p>Generate AUIPC + filler + compressed jump sequence (for both c.jr and c.jalr)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._generate_jalr_sequence">
+<span class="sig-name descname"><span class="pre">_generate_jalr_sequence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._generate_jalr_sequence" title="Link to this definition"></a></dt>
+<dd><p>Generate AUIPC + filler + JALR sequence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator._generate_stack_pointer_sequence">
+<span class="sig-name descname"><span class="pre">_generate_stack_pointer_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator._generate_stack_pointer_sequence" title="Link to this definition"></a></dt>
+<dd><p>Generate sequence for c.lwsp/c.swsp that sets up SP to point to inline buffer with interleaved filler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxGenerator.generate" title="Link to this definition"></a></dt>
+<dd><p>Generate operands for given syntax type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">riscv32_isg.</span></span><span class="sig-name descname"><span class="pre">SyntaxType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riscv32_isg.SyntaxType" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Instruction syntax patterns - base instruction formats from RISC-V ratified specification</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.B_TYPE">
+<span class="sig-name descname"><span class="pre">B_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'b_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.B_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CA_TYPE">
+<span class="sig-name descname"><span class="pre">CA_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ca_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CA_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CB_TYPE">
+<span class="sig-name descname"><span class="pre">CB_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cb_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CB_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CIW_TYPE">
+<span class="sig-name descname"><span class="pre">CIW_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ciw_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CIW_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CI_TYPE">
+<span class="sig-name descname"><span class="pre">CI_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ci_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CI_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CJ_TYPE">
+<span class="sig-name descname"><span class="pre">CJ_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cj_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CJ_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CL_TYPE">
+<span class="sig-name descname"><span class="pre">CL_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cl_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CL_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CR_TYPE">
+<span class="sig-name descname"><span class="pre">CR_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cr_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CR_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CSR_TYPE">
+<span class="sig-name descname"><span class="pre">CSR_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'csr_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CSR_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CSS_TYPE">
+<span class="sig-name descname"><span class="pre">CSS_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'css_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CSS_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.CS_TYPE">
+<span class="sig-name descname"><span class="pre">CS_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cs_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.CS_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.I_TYPE">
+<span class="sig-name descname"><span class="pre">I_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'i_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.I_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.J_TYPE">
+<span class="sig-name descname"><span class="pre">J_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'j_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.J_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.R_TYPE">
+<span class="sig-name descname"><span class="pre">R_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'r_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.R_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.S_TYPE">
+<span class="sig-name descname"><span class="pre">S_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'s_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.S_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="riscv32_isg.SyntaxType.U_TYPE">
+<span class="sig-name descname"><span class="pre">U_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'u_type'</span></em><a class="headerlink" href="#riscv32_isg.SyntaxType.U_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Data_Generation_Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils.html" class="btn btn-neutral float-right" title="utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mathias Duedahl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

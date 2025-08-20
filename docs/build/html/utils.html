@@ -1,0 +1,1007 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils module &mdash; riscv-power-tools v0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=fa47ad08"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="riscv32_isg module" href="riscv32_isg.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            riscv-power-tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Data_Generation_Pipeline</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="riscv32_isg.html">riscv32_isg module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utils.DataGenerator"><code class="docutils literal notranslate"><span class="pre">DataGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.__init__"><code class="docutils literal notranslate"><span class="pre">DataGenerator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator._capture_trace"><code class="docutils literal notranslate"><span class="pre">DataGenerator._capture_trace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator._load_state"><code class="docutils literal notranslate"><span class="pre">DataGenerator._load_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator._prime_debugger"><code class="docutils literal notranslate"><span class="pre">DataGenerator._prime_debugger()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator._run_gdb_command_efficient"><code class="docutils literal notranslate"><span class="pre">DataGenerator._run_gdb_command_efficient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator._run_gdb_trace"><code class="docutils literal notranslate"><span class="pre">DataGenerator._run_gdb_trace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator._save_state"><code class="docutils literal notranslate"><span class="pre">DataGenerator._save_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator._set_sample_range"><code class="docutils literal notranslate"><span class="pre">DataGenerator._set_sample_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.build_all"><code class="docutils literal notranslate"><span class="pre">DataGenerator.build_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.build_software"><code class="docutils literal notranslate"><span class="pre">DataGenerator.build_software()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.debug_all_labels"><code class="docutils literal notranslate"><span class="pre">DataGenerator.debug_all_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.debug_labels"><code class="docutils literal notranslate"><span class="pre">DataGenerator.debug_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.find_source_file"><code class="docutils literal notranslate"><span class="pre">DataGenerator.find_source_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.gen_makefile"><code class="docutils literal notranslate"><span class="pre">DataGenerator.gen_makefile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.generate_all_data"><code class="docutils literal notranslate"><span class="pre">DataGenerator.generate_all_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.generate_all_labels"><code class="docutils literal notranslate"><span class="pre">DataGenerator.generate_all_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.generate_data"><code class="docutils literal notranslate"><span class="pre">DataGenerator.generate_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.generate_labels"><code class="docutils literal notranslate"><span class="pre">DataGenerator.generate_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.get_dir"><code class="docutils literal notranslate"><span class="pre">DataGenerator.get_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.get_ext"><code class="docutils literal notranslate"><span class="pre">DataGenerator.get_ext()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.get_software_status"><code class="docutils literal notranslate"><span class="pre">DataGenerator.get_software_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataGenerator.list_software"><code class="docutils literal notranslate"><span class="pre">DataGenerator.list_software()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.DataSynthesizer"><code class="docutils literal notranslate"><span class="pre">DataSynthesizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataSynthesizer.__init__"><code class="docutils literal notranslate"><span class="pre">DataSynthesizer.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataSynthesizer.extend_corpus"><code class="docutils literal notranslate"><span class="pre">DataSynthesizer.extend_corpus()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataSynthesizer.gen_c_file"><code class="docutils literal notranslate"><span class="pre">DataSynthesizer.gen_c_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.DataWrangler"><code class="docutils literal notranslate"><span class="pre">DataWrangler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.__init__"><code class="docutils literal notranslate"><span class="pre">DataWrangler.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler._get_fileformat"><code class="docutils literal notranslate"><span class="pre">DataWrangler._get_fileformat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.aggregate_counts"><code class="docutils literal notranslate"><span class="pre">DataWrangler.aggregate_counts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.calculate_snr"><code class="docutils literal notranslate"><span class="pre">DataWrangler.calculate_snr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.count_instructions"><code class="docutils literal notranslate"><span class="pre">DataWrangler.count_instructions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.extract_instructions"><code class="docutils literal notranslate"><span class="pre">DataWrangler.extract_instructions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.genDatasetFairseq"><code class="docutils literal notranslate"><span class="pre">DataWrangler.genDatasetFairseq()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.gen_labels"><code class="docutils literal notranslate"><span class="pre">DataWrangler.gen_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.generateVocab"><code class="docutils literal notranslate"><span class="pre">DataWrangler.generateVocab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.get_instruction_distribution"><code class="docutils literal notranslate"><span class="pre">DataWrangler.get_instruction_distribution()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.get_raw_labels"><code class="docutils literal notranslate"><span class="pre">DataWrangler.get_raw_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.get_trace_counts"><code class="docutils literal notranslate"><span class="pre">DataWrangler.get_trace_counts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.get_traces"><code class="docutils literal notranslate"><span class="pre">DataWrangler.get_traces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.parse_labels"><code class="docutils literal notranslate"><span class="pre">DataWrangler.parse_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.parse_raw_data"><code class="docutils literal notranslate"><span class="pre">DataWrangler.parse_raw_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.DataWrangler.wavWrite"><code class="docutils literal notranslate"><span class="pre">DataWrangler.wavWrite()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.IbexChipWhisperer"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.IbexChipWhisperer.__init__"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.IbexChipWhisperer.connect"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.IbexChipWhisperer.disconnect"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.disconnect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.IbexChipWhisperer.program_fpga"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.program_fpga()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.IbexChipWhisperer.reload"><code class="docutils literal notranslate"><span class="pre">IbexChipWhisperer.reload()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.ProjectBaseClass"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.ProjectBaseClass.__init__"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.ProjectBaseClass.get_dir"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass.get_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.ProjectBaseClass.get_ext"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass.get_ext()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.ProjectBaseClass.get_software_directories"><code class="docutils literal notranslate"><span class="pre">ProjectBaseClass.get_software_directories()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">riscv-power-tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Data_Generation_Pipeline</a></li>
+      <li class="breadcrumb-item active">utils module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-utils">
+<span id="utils-module"></span><h1>utils module<a class="headerlink" href="#module-utils" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.DataGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">DataGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CW305_IBEX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data_generator_state.json'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#utils.ProjectBaseClass" title="utils.ProjectBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectBaseClass</span></code></a></p>
+<p>DataGenerator handle data and label generation for the software running on the Ibex softcore.</p>
+<p>This class manages the build process, data generation, and labeling for software targets,
+keeping track of state to avoid redundant operations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CW305_IBEX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data_generator_state.json'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the DataGenerator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src_dir</strong> (<em>str</em>) – Source directory containing software folders</p></li>
+<li><p><strong>platform</strong> (<em>str</em>) – Target platform for compilation</p></li>
+<li><p><strong>state_file</strong> (<em>str</em>) – File to store/load state information</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator._capture_trace">
+<span class="sig-name descname"><span class="pre">_capture_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">softcore</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator._capture_trace" title="Link to this definition"></a></dt>
+<dd><p>Captures trace between trigger_high and trigger_low</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+<li><p><strong>softcore</strong> (<a class="reference internal" href="#utils.IbexChipWhisperer" title="utils.IbexChipWhisperer"><em>IbexChipWhisperer</em></a>) – Softcore on which to run and debug the software</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator._load_state">
+<span class="sig-name descname"><span class="pre">_load_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator._load_state" title="Link to this definition"></a></dt>
+<dd><p>Load state from disk or create new state dictionary</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator._prime_debugger">
+<span class="sig-name descname"><span class="pre">_prime_debugger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator._prime_debugger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator._run_gdb_command_efficient">
+<span class="sig-name descname"><span class="pre">_run_gdb_command_efficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator._run_gdb_command_efficient" title="Link to this definition"></a></dt>
+<dd><p>Run a GDB command and proceed as soon as the prompt returns.
+Only waits as long as necessary, up to max_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator._run_gdb_trace">
+<span class="sig-name descname"><span class="pre">_run_gdb_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator._run_gdb_trace" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator._save_state">
+<span class="sig-name descname"><span class="pre">_save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator._save_state" title="Link to this definition"></a></dt>
+<dd><p>Save state to disk</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator._set_sample_range">
+<span class="sig-name descname"><span class="pre">_set_sample_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">softcore</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator._set_sample_range" title="Link to this definition"></a></dt>
+<dd><p>Return the appropriate amount of samples to capture till trigger_low</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+<li><p><strong>softcore</strong> (<a class="reference internal" href="#utils.IbexChipWhisperer" title="utils.IbexChipWhisperer"><em>IbexChipWhisperer</em></a>) – Softcore on which to run and debug the software</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>n samples to capture between trigger_high and trigger_low for software_name</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.build_all">
+<span class="sig-name descname"><span class="pre">build_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.build_all" title="Link to this definition"></a></dt>
+<dd><p>Build all software</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clean</strong> (<em>bool</em>) – Whether to clean before building</p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – Whether to force rebuild even if already compiled</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lists of successful and failed software names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.build_software">
+<span class="sig-name descname"><span class="pre">build_software</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.build_software" title="Link to this definition"></a></dt>
+<dd><p>Build the software with a new Makefile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+<li><p><strong>clean</strong> (<em>bool</em>) – Whether to clean before building</p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – Whether to force rebuild even if already compiled</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if build was successful, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.debug_all_labels">
+<span class="sig-name descname"><span class="pre">debug_all_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">softcore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.debug_all_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate labels for all software with data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>softcore</strong> (<a class="reference internal" href="#utils.IbexChipWhisperer" title="utils.IbexChipWhisperer"><em>IbexChipWhisperer</em></a>) – Softcore on which to run and debug the software</p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – Whether to force label generation even if already done</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lists of successful and failed software names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.debug_labels">
+<span class="sig-name descname"><span class="pre">debug_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">softcore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CW305_IBEX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.debug_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate labels for a specific software</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+<li><p><strong>softcore</strong> (<a class="reference internal" href="#utils.IbexChipWhisperer" title="utils.IbexChipWhisperer"><em>IbexChipWhisperer</em></a>) – Softcore on which to run and debug the software</p></li>
+<li><p><strong>platform</strong> (<em>str</em>) – Name of the compile target platform</p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – Whether to force label generation even if already done</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if label generation was successful, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.find_source_file">
+<span class="sig-name descname"><span class="pre">find_source_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.find_source_file" title="Link to this definition"></a></dt>
+<dd><p>Find the .c file in the software directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.gen_makefile">
+<span class="sig-name descname"><span class="pre">gen_makefile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.gen_makefile" title="Link to this definition"></a></dt>
+<dd><p>Create a modified Makefile with main.c and the specified source file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.generate_all_data">
+<span class="sig-name descname"><span class="pre">generate_all_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">softcore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repetitions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.generate_all_data" title="Link to this definition"></a></dt>
+<dd><p>Generate data for all successfully compiled software</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>softcore</strong> (<a class="reference internal" href="#utils.IbexChipWhisperer" title="utils.IbexChipWhisperer"><em>IbexChipWhisperer</em></a>) – Softcore on which to run and debug the software</p></li>
+<li><p><strong>repetitions</strong> (<em>int</em>) – How many repeated measurements should be captured per software</p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – Whether to force data generation even if already done</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lists of successful and failed software names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.generate_all_labels">
+<span class="sig-name descname"><span class="pre">generate_all_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.generate_all_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate labels for all software using spike</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>force</strong> (<em>bool</em>) – Whether to force label generation even if already done</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lists of successful and failed software names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">softcore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repetitions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CW305_IBEX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generate data for a specific software</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+<li><p><strong>softcore</strong> (<a class="reference internal" href="#utils.IbexChipWhisperer" title="utils.IbexChipWhisperer"><em>IbexChipWhisperer</em></a>) – Softcore on which to run and debug the software</p></li>
+<li><p><strong>repetitions</strong> (<em>int</em>) – Amount of repeated traces to capture for the software</p></li>
+<li><p><strong>platform</strong> (<em>str</em>) – Name of the compile target platform</p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – Whether to force data generation even if already done</p></li>
+<li><p><strong>save</strong> (<em>bool</em>) – Whether to save the data to disk</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if data generation was successful, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.generate_labels">
+<span class="sig-name descname"><span class="pre">generate_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CW305_IBEX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.generate_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate labels for a specific software via Spike simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+<li><p><strong>platform</strong> (<em>str</em>) – Name of the compile target platform</p></li>
+<li><p><strong>force</strong> (<em>bool</em>) – Whether to force label generation even if already done</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if label generation was successful, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.get_dir">
+<span class="sig-name descname"><span class="pre">get_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.get_dir" title="Link to this definition"></a></dt>
+<dd><p>Get full path of the software directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Full path of the specified directory.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.get_ext">
+<span class="sig-name descname"><span class="pre">get_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CW305_IBEX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.get_ext" title="Link to this definition"></a></dt>
+<dd><p>Get full path of the compiled software software_name with extension ext</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+<li><p><strong>ext</strong> (<em>str</em>) – File extension of software</p></li>
+<li><p><strong>platform</strong> (<em>str</em>) – Name of the compile target platform</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Full path of the specified file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.get_software_status">
+<span class="sig-name descname"><span class="pre">get_software_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.get_software_status" title="Link to this definition"></a></dt>
+<dd><p>Get status of one or all software</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>software_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Specific software name, or None for all software</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing software status information</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataGenerator.list_software">
+<span class="sig-name descname"><span class="pre">list_software</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataGenerator.list_software" title="Link to this definition"></a></dt>
+<dd><p>List all available software with their compilation status</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of software names</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.DataSynthesizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">DataSynthesizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_instructions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataSynthesizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#utils.ProjectBaseClass" title="utils.ProjectBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectBaseClass</span></code></a></p>
+<p>Class for synthesizing data and creating C files for Ibex-related operations.
+Inherits from ProjectBaseClass to leverage common path handling and utility functions.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataSynthesizer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_instructions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataSynthesizer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the DataSynthesizer class with project root path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>project_root_path</strong> (<em>str</em>) – Path to the project root directory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataSynthesizer.extend_corpus">
+<span class="sig-name descname"><span class="pre">extend_corpus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_instructions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_new_files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'isg'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataSynthesizer.extend_corpus" title="Link to this definition"></a></dt>
+<dd><p>Generate more .c files containing random RISCV32IMC assembly instructions.
+All new softwares are named according to the convention: isg_&lt;NUM_INSTRUCTIONS&gt;_&lt;ID&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_instructions</strong> (<em>int</em>) – (approximate) number of ASM instructions per file</p></li>
+<li><p><strong>num_new_files</strong> (<em>int</em>) – number of new files to generate</p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – name prefix for each of the created softwares</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Success status of the generation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>pass</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataSynthesizer.gen_c_file">
+<span class="sig-name descname"><span class="pre">gen_c_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_instructions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nop_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataSynthesizer.gen_c_file" title="Link to this definition"></a></dt>
+<dd><p>Create a .c file in the appropriate directory for the specified software.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+<li><p><strong>num_instructions</strong> (<em>int</em>) – (approximate) number of ASM instructions to generate</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em>) – Whether to overwrite an existing file (default: False)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the created C file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileExistsError</strong> – If the file already exists and overwrite is False</p></li>
+<li><p><strong>ValueError</strong> – If the software_name is invalid</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.DataWrangler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">DataWrangler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CW305_IBEX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#utils.ProjectBaseClass" title="utils.ProjectBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectBaseClass</span></code></a></p>
+<p>DataWrangler to handle data parsing and analysis.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CW305_IBEX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the DataWrangler
+:type project_root_path: 
+:param project_root_path: Source directory containing software folders
+:type project_root_path: str
+:type platform: 
+:param platform: Target platform for compilation
+:type platform: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler._get_fileformat">
+<span class="sig-name descname"><span class="pre">_get_fileformat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileformat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">software_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler._get_fileformat" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.aggregate_counts">
+<span class="sig-name descname"><span class="pre">aggregate_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count_dicts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.aggregate_counts" title="Link to this definition"></a></dt>
+<dd><p>Aggregate instruction counts across multiple software.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>count_dicts</strong> (<em>dict</em>) – Dictionary of instruction count dictionaries</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Aggregated count dictionary</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.calculate_snr">
+<span class="sig-name descname"><span class="pre">calculate_snr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datagenerator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.calculate_snr" title="Link to this definition"></a></dt>
+<dd><p>Calculate signal-to-noise ratio for a software.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datagenerator</strong> – Data generator</p></li>
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Signal-to-noise ratio</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.count_instructions">
+<span class="sig-name descname"><span class="pre">count_instructions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instructions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.count_instructions" title="Link to this definition"></a></dt>
+<dd><p>Count occurrences of each instruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>instructions</strong> (<em>list</em>) – List of instruction names</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with instruction counts</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.extract_instructions">
+<span class="sig-name descname"><span class="pre">extract_instructions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instr_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.extract_instructions" title="Link to this definition"></a></dt>
+<dd><p>Extract just the instruction names from parsed instruction list, excluding register operands.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>instr_list</strong> (<em>list</em>) – List of parsed instructions</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of instruction names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.genDatasetFairseq">
+<span class="sig-name descname"><span class="pre">genDatasetFairseq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dataset'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.genDatasetFairseq" title="Link to this definition"></a></dt>
+<dd><p>Generate a dataset for Fairseq’s FileTraceDataset by arranging directory structure and creating manifest.</p>
+<p>This method:
+1. Creates partition directories as specified in dataset_dict
+2. Copies trace files to appropriate locations
+3. Creates manifest files with batch information including trace paths, program labels, and trace lengths</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_dict</strong> (<em>dict</em>) – Dictionary mapping partition names (e.g., ‘train’, ‘test’)
+to lists of software names to include in each partition</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the dataset</p></li>
+<li><p><strong>manifest_dir</strong> (<em>str</em>) – The base directory for manifests</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side effects:</dt><dd><ul class="simple">
+<li><p>Creates directories for each partition</p></li>
+<li><p>Copies trace NPY files to appropriate locations</p></li>
+<li><p>Creates manifest JSON files for each partition</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.gen_labels">
+<span class="sig-name descname"><span class="pre">gen_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.gen_labels" title="Link to this definition"></a></dt>
+<dd><p>Generate and save instruction labels for each software.</p>
+<p>Creates two files for each software in its respective directory:
+- debug_instr.txt: Contains only instruction names, one per line
+- debug_instr_reg.txt: Contains instructions with their registers/operands, one per line</p>
+<p>If a file already exists, it will be skipped unless force=True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>force</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, overwrite existing files. Defaults to False.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.generateVocab">
+<span class="sig-name descname"><span class="pre">generateVocab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.generateVocab" title="Link to this definition"></a></dt>
+<dd><p>labels: list of strings, labels to generate vocab from
+out_path: str, path to the directory to write vocab file to</p>
+<p>Writes vocab.txt file to disk</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.get_instruction_distribution">
+<span class="sig-name descname"><span class="pre">get_instruction_distribution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.get_instruction_distribution" title="Link to this definition"></a></dt>
+<dd><p>Get the aggregate count of each instruction across all software.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Two lists (instruction_names, counts) sorted by count in descending order</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.get_raw_labels">
+<span class="sig-name descname"><span class="pre">get_raw_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gdb'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.get_raw_labels" title="Link to this definition"></a></dt>
+<dd><p>Get raw instruction data for specified software or all software.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the software to get labels for.
+If None, gets labels for all software.</p></li>
+<li><p><strong>source</strong> (<em>str</em>) – Data source - ‘gdb’ or ‘spike’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary of raw labels for all software or string for specific software</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.get_trace_counts">
+<span class="sig-name descname"><span class="pre">get_trace_counts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.get_trace_counts" title="Link to this definition"></a></dt>
+<dd><p>Get the number of traces for each software, only first repetition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of tuples (software_name, trace_count) sorted by count in descending order</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.get_traces">
+<span class="sig-name descname"><span class="pre">get_traces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.get_traces" title="Link to this definition"></a></dt>
+<dd><p>Get trace data for specified software or all software.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>software_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the software to get traces for.
+If None, gets traces for all software.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary of traces for all software or array for specific software</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.parse_labels">
+<span class="sig-name descname"><span class="pre">parse_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gdb'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.parse_labels" title="Link to this definition"></a></dt>
+<dd><p>Parse instruction logs into structured instruction data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the software to parse labels for.
+If None, parses labels for all software.</p></li>
+<li><p><strong>source</strong> (<em>str</em>) – Data source - ‘gdb’ or ‘spike’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Parsed instruction data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.parse_raw_data">
+<span class="sig-name descname"><span class="pre">parse_raw_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gdb'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.parse_raw_data" title="Link to this definition"></a></dt>
+<dd><p>Parse raw instruction data into instruction list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw_data</strong> (<em>str</em>) – Raw instruction data</p></li>
+<li><p><strong>source</strong> (<em>str</em>) – Data source - ‘gdb’ or ‘spike’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of parsed instructions with their details</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.DataWrangler.wavWrite">
+<span class="sig-name descname"><span class="pre">wavWrite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trace_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.DataWrangler.wavWrite" title="Link to this definition"></a></dt>
+<dd><p>Convert and write a trace file to WAV format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fpath</strong> (<em>str</em>) – Path to write .wav file to</p></li>
+<li><p><strong>trace_path</strong> (<em>str</em>) – Path to .npy np.array trace file to convert</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Duration of the trace in seconds</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side effects:</dt><dd><p>Writes trace to disk as a .wav file</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.IbexChipWhisperer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">IbexChipWhisperer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oversampling_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.IbexChipWhisperer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#utils.ProjectBaseClass" title="utils.ProjectBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectBaseClass</span></code></a></p>
+<p>Class to manage ChipWhisperer operations with Ibex RISC-V core.
+Handles FPGA programming, firmware loading, and debugging operations with CW305 Artix-7 FPGA.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.IbexChipWhisperer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oversampling_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.IbexChipWhisperer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the IbexChipWhisperer controller.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ibex_base_path</strong> (<em>str</em>) – Path to the Ibex demo system repository</p></li>
+<li><p><strong>oversampling_rate</strong> (<em>int</em>) – Oversampling rate = sampling frequency / softcore clock frequency</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.IbexChipWhisperer.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.IbexChipWhisperer.connect" title="Link to this definition"></a></dt>
+<dd><p>Connect to the ChipWhisperer measurement device and set up the scope and target.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.IbexChipWhisperer.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.IbexChipWhisperer.disconnect" title="Link to this definition"></a></dt>
+<dd><p>Disconnect from the ChipWhisperer device.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.IbexChipWhisperer.program_fpga">
+<span class="sig-name descname"><span class="pre">program_fpga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitstream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lowrisc_ibex_demo_system_512KRAM.bit'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prog_speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.IbexChipWhisperer.program_fpga" title="Link to this definition"></a></dt>
+<dd><p>Program the FPGA with the specified bitstream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bitstream</strong> (<em>str</em>) – Name of the bitstream file to program</p></li>
+<li><p><strong>prog_speed</strong> (<em>float</em>) – Programming speed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if programming was successful, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.IbexChipWhisperer.reload">
+<span class="sig-name descname"><span class="pre">reload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.IbexChipWhisperer.reload" title="Link to this definition"></a></dt>
+<dd><p>Reset the device and load a program.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>program_path</strong> (<em>str</em>) – Path to the program to load</p></li>
+<li><p><strong>debug</strong> (<em>bool</em>) – If True, halt after loading (await debugger)</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – If True, print verbose output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Result of the load operation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>subprocess.CompletedProcess</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.ProjectBaseClass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">ProjectBaseClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.ProjectBaseClass" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for Ibex-related operations.
+Provides common path handling and utility functions.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.ProjectBaseClass.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../../'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.ProjectBaseClass.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the base class with project root path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>project_root_path</strong> (<em>str</em>) – Path to the project root directory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.ProjectBaseClass.get_dir">
+<span class="sig-name descname"><span class="pre">get_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.ProjectBaseClass.get_dir" title="Link to this definition"></a></dt>
+<dd><p>Get full path of the software directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Full path of the specified directory.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.ProjectBaseClass.get_ext">
+<span class="sig-name descname"><span class="pre">get_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">software_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CW305_IBEX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.ProjectBaseClass.get_ext" title="Link to this definition"></a></dt>
+<dd><p>Get full path of the compiled software software_name with extension ext</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>software_name</strong> (<em>str</em>) – Name of the software</p></li>
+<li><p><strong>ext</strong> (<em>str</em>) – File extension of software</p></li>
+<li><p><strong>platform</strong> (<em>str</em>) – Name of the compile target platform</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Full path of the specified file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.ProjectBaseClass.get_software_directories">
+<span class="sig-name descname"><span class="pre">get_software_directories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.ProjectBaseClass.get_software_directories" title="Link to this definition"></a></dt>
+<dd><p>Get all software directories in the source directory that contain a .c file with the same name</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="riscv32_isg.html" class="btn btn-neutral float-left" title="riscv32_isg module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mathias Duedahl.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
